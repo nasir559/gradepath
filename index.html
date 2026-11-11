@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#E9E8F8">
+  <meta name="description" content="Calculate your CGPA using the UGC or IUB grading system.">
+  <title>Gradepath — CGPA Calculator</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="#/" class="brand" aria-label="Gradepath home">
+        <span class="brand-icon" aria-hidden="true">▥</span>
+        gradepath<span class="brand-dot">.</span>
+      </a>
+
+      <span class="header-note">A little clarity for your next chapter.</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="home-page">
+      <div class="hero">
+        <span class="eyebrow">MADE FOR YOUR NEXT SEMESTER</span>
+
+        <h1>
+          Your CGPA,<br>
+          <em>a little clearer.</em>
+        </h1>
+
+        <p>
+          Choose your grading system, add your courses,
+          and see where this semester could take you.
+        </p>
+      </div>
+
+      <div class="section-heading">
+        <h2>Choose your grading system</h2>
+        <p>Select the scale followed by your university.</p>
+      </div>
+
+      <div id="university-grid" class="university-grid"></div>
+
+      <div class="how-it-works">
+        <div>
+          <span class="step-number blue">01</span>
+          <h3>Choose your scale</h3>
+          <p>Select UGC or IUB grading.</p>
+        </div>
+
+        <div>
+          <span class="step-number lavender">02</span>
+          <h3>Add your courses</h3>
+          <p>Enter credits and select your grades.</p>
+        </div>
+
+        <div>
+          <span class="step-number peach">03</span>
+          <h3>See your result</h3>
+          <p>Get your semester GPA and updated CGPA.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculator page -->
+    <section id="calculator-page" hidden>
+      <a href="#/" class="back-link">← All grading systems</a>
+
+      <div class="calculator-heading">
+        <span id="system-badge" class="system-badge"></span>
+
+        <h1 id="calculator-title" tabindex="-1">
+          One semester.<br>
+          <em>A clearer picture.</em>
+        </h1>
+
+        <p id="university-name"></p>
+      </div>
+
+      <div class="calculator-layout">
+        <form id="calculator-form" novalidate>
+          <!-- Optional previous academic results -->
+          <section class="panel">
+            <div class="panel-heading">
+              <span class="step-number blue">01</span>
+
+              <div>
+                <h2>Your starting point</h2>
+                <p>Bring your previous results along.</p>
+              </div>
+
+              <span class="optional-label">Optional</span>
+            </div>
+
+            <div class="previous-fields">
+              <div class="field">
+                <label for="previous-cgpa">Current CGPA</label>
+
+                <input
+                  id="previous-cgpa"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  max="4"
+                  step="any"
+                  placeholder="e.g. 3.50"
+                >
+              </div>
+
+              <div class="field">
+                <label for="previous-credits">Credits completed</label>
+
+                <input
+                  id="previous-credits"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="any"
+                  placeholder="e.g. 60"
+                >
+              </div>
+            </div>
+
+            <p class="hint">
+              Starting fresh? Leave both fields empty. Otherwise,
+              use the credits included in your current CGPA.
+            </p>
+          </section>
+
+          <!-- Current semester courses -->
+          <section class="panel">
+            <div class="panel-heading">
+              <span class="step-number lavender">02</span>
+
+              <div>
+                <h2>This semester’s courses</h2>
+                <p>Choose a grade for every course you want to count.</p>
+              </div>
+            </div>
+
+            <div id="course-list"></div>
+
+            <button
+              id="add-course"
+              class="add-course-button"
+              type="button"
+            >
+              + Add another course
+            </button>
+
+            <p class="hint">
+              Empty rows are ignored. F grades count with zero grade points.
+            </p>
+          </section>
+
+          <p id="form-error" class="error-message" role="alert" hidden></p>
+
+          <div class="form-actions">
+            <button class="primary-button" type="submit">
+              Calculate my CGPA <span aria-hidden="true">↗</span>
+            </button>
+
+            <button id="reset-button" class="reset-button" type="button">
+              Reset all
+            </button>
+          </div>
+
+          <p class="privacy-note">
+            Your grades stay in this browser. Nothing is uploaded.
+          </p>
+        </form>
+
+        <!-- Result and grading guide -->
+        <aside class="result-column">
+          <section class="result-panel" aria-label="CGPA result">
+            <span class="eyebrow">THE BIGGER PICTURE</span>
+
+            <div id="empty-result" class="empty-result">
+              <span class="result-decoration" aria-hidden="true">✳</span>
+
+              <h2>Your next number<br><em>starts here.</em></h2>
+
+              <p>
+                Add your courses and grades,<br>
+                then calculate your CGPA.
+              </p>
+            </div>
+
+            <div
+              id="calculated-result"
+              aria-live="polite"
+              aria-atomic="true"
+              hidden
+            >
+              <p class="result-label">Your projected CGPA</p>
+
+              <div class="cgpa-display">
+                <strong id="result-cgpa">0.00</strong>
+                <span>/ 4.00</span>
+              </div>
+
+              <div class="result-stat">
+                <span>Semester GPA</span>
+                <strong id="result-semester-gpa">0.00</strong>
+              </div>
+
+              <div class="result-stat">
+                <span>New credits</span>
+                <strong id="result-new-credits">0</strong>
+              </div>
+
+              <div class="result-stat">
+                <span>Total credits</span>
+                <strong id="result-total-credits">0</strong>
+              </div>
+
+              <p id="result-description" class="result-description"></p>
+
+              <p id="stale-message" class="stale-message" hidden>
+                Your entries changed. Calculate again to update this result.
+              </p>
+
+              <p class="hint">
+                Results are displayed to two decimal places.
+                Full precision is used during calculation.
+              </p>
+            </div>
+          </section>
+
+          <details class="grading-guide">
+            <summary>Your grading guide</summary>
+
+            <div class="guide-content">
+              <p id="grading-note" class="hint"></p>
+
+              <table>
+                <caption id="grading-caption"></caption>
+
+                <thead>
+                  <tr>
+                    <th scope="col">Marks</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Points</th>
+                  </tr>
+                </thead>
+
+                <tbody id="grading-table-body"></tbody>
+              </table>
+
+              <a
+                id="grading-source"
+                class="policy-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Official grading policy ↗
+              </a>
+            </div>
+          </details>
+
+          <p class="retake-note">
+            This calculator adds new course results. It does not automatically
+            replace previous grades when a course is retaken.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <noscript>
+      <p>Please enable JavaScript to use the CGPA calculator.</p>
+    </noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>gradepath.</span>
+      <p>A little clarity. A little less stress.</p>
+    </div>
+  </footer>
+</body>
+</html>
