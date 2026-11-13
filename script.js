@@ -48,6 +48,138 @@ const GRADING_SYSTEMS = {
   }
 };
 
+// NSU
+GRADING_SYSTEMS.nsu = {
+  name: "North South University",
+  shortName: "NSU",
+  description: "North South University’s published grading scale.",
+  topGrade: "A starts at 93%",
+  note:
+    "NSU’s published standard grading table. Individual instructors may adjust exact grade cutoffs.",
+  source:
+    "https://www.northsouth.edu/academic/grading-policy.html",
+
+  grades: [
+    { letter: "A",  points: 4.00, range: "93% and above" },
+    { letter: "A-", points: 3.70, range: "90–92%" },
+    { letter: "B+", points: 3.30, range: "87–89%" },
+    { letter: "B",  points: 3.00, range: "83–86%" },
+    { letter: "B-", points: 2.70, range: "80–82%" },
+    { letter: "C+", points: 2.30, range: "77–79%" },
+    { letter: "C",  points: 2.00, range: "73–76%" },
+    { letter: "C-", points: 1.70, range: "70–72%" },
+    { letter: "D+", points: 1.30, range: "67–69%" },
+    { letter: "D",  points: 1.00, range: "60–66%" },
+    { letter: "F",  points: 0.00, range: "Below 60%" }
+  ]
+};
+
+// BRAC
+GRADING_SYSTEMS.brac = {
+  name: "BRAC University",
+  shortName: "BRAC",
+  description: "BRAC University’s undergraduate grading scale.",
+  topGrade: "A starts at 90%",
+  note:
+    "Undergraduate scale from Fall 2020. Both A and A+ earn 4.00 grade points.",
+  source:
+    "https://www.bracu.ac.bd/academics/policies-and-procedures",
+
+  grades: [
+    { letter: "A+", points: 4.00, range: "97–100%" },
+    { letter: "A",  points: 4.00, range: "90% to below 97%" },
+    { letter: "A-", points: 3.70, range: "85% to below 90%" },
+    { letter: "B+", points: 3.30, range: "80% to below 85%" },
+    { letter: "B",  points: 3.00, range: "75% to below 80%" },
+    { letter: "B-", points: 2.70, range: "70% to below 75%" },
+    { letter: "C+", points: 2.30, range: "65% to below 70%" },
+    { letter: "C",  points: 2.00, range: "60% to below 65%" },
+    { letter: "C-", points: 1.70, range: "57% to below 60%" },
+    { letter: "D+", points: 1.30, range: "55% to below 57%" },
+    { letter: "D",  points: 1.00, range: "52% to below 55%" },
+    { letter: "D-", points: 0.70, range: "50% to below 52%" },
+    { letter: "F",  points: 0.00, range: "Below 50%" }
+  ]
+};
+
+// AIUB 
+GRADING_SYSTEMS.aiub = {
+  name: "American International University-Bangladesh",
+  shortName: "AIUB",
+
+  description: "AIUB’s current published grading system.",
+  topGrade: "A+ starts at 90%",
+
+  note:
+    "V3 applies to undergraduate and graduate students enrolled from Spring 2016–2017 onward.",
+
+  source:
+    "https://www.aiub.edu/academic-regulations/grading-system",
+
+  grades: [
+    { letter: "A+", points: 4.00, range: "90–100%" },
+    { letter: "A",  points: 3.75, range: "85% to below 90%" },
+    { letter: "B+", points: 3.50, range: "80% to below 85%" },
+    { letter: "B",  points: 3.25, range: "75% to below 80%" },
+    { letter: "C+", points: 3.00, range: "70% to below 75%" },
+    { letter: "C",  points: 2.75, range: "65% to below 70%" },
+    { letter: "D+", points: 2.50, range: "60% to below 65%" },
+    { letter: "D",  points: 2.25, range: "50% to below 60%" },
+    { letter: "F",  points: 0.00, range: "Below 50%" }
+  ]
+};
+
+//UIU
+GRADING_SYSTEMS.uiu = {
+  name: "United International University",
+  shortName: "UIU",
+  description: "United International University’s published grading scale.",
+  topGrade: "A starts at 90%",
+  note:
+    "UIU’s published grading table. A- earns 3.67 and B+ earns 3.33 grade points.",
+  source:
+    "https://www.uiu.ac.bd/academics/grading-performance-evaluation/",
+
+  grades: [
+    { letter: "A",  points: 4.00, range: "90–100%" },
+    { letter: "A-", points: 3.67, range: "86–89%" },
+    { letter: "B+", points: 3.33, range: "82–85%" },
+    { letter: "B",  points: 3.00, range: "78–81%" },
+    { letter: "B-", points: 2.67, range: "74–77%" },
+    { letter: "C+", points: 2.33, range: "70–73%" },
+    { letter: "C",  points: 2.00, range: "66–69%" },
+    { letter: "C-", points: 1.67, range: "62–65%" },
+    { letter: "D+", points: 1.33, range: "58–61%" },
+    { letter: "D",  points: 1.00, range: "55–57%" },
+    { letter: "F",  points: 0.00, range: "0–54%" }
+  ]
+};
+
+//ULAB
+GRADING_SYSTEMS.ulab = {
+  name: "University of Liberal Arts Bangladesh",
+  shortName: "ULAB",
+  description: "ULAB’s published undergraduate grading scale.",
+  topGrade: "A starts at 90%",
+  note:
+    "Undergraduate scale. Both A and A+ earn 4.00. A- earns 3.80 and B- earns 2.80.",
+  source:
+    "https://ulab.edu.bd/sites/default/files/uploads/2026/10/06/General-Academic-Policy-Undergraduate-6-10-2026-v3.pdf",
+
+  grades: [
+    { letter: "A+", points: 4.00, range: "95% and above" },
+    { letter: "A",  points: 4.00, range: "90–94%" },
+    { letter: "A-", points: 3.80, range: "85–89%" },
+    { letter: "B+", points: 3.30, range: "80–84%" },
+    { letter: "B",  points: 3.00, range: "75–79%" },
+    { letter: "B-", points: 2.80, range: "70–74%" },
+    { letter: "C+", points: 2.50, range: "65–69%" },
+    { letter: "C",  points: 2.20, range: "60–64%" },
+    { letter: "D",  points: 1.50, range: "50–59%" },
+    { letter: "F",  points: 0.00, range: "Below 50%" }
+  ]
+};
+
 const elements = {
   homePage: document.getElementById("home-page"),
   calculatorPage: document.getElementById("calculator-page"),
@@ -67,10 +199,6 @@ const elements = {
 let selectedSystem = null;
 let nextCourseId = 1;
 let hasResult = false;
-
-/* =========================================================
-   3. HOMEPAGE AND ROUTING
-   ========================================================= */
 
 function renderUniversityCards() {
   elements.universityGrid.replaceChildren();

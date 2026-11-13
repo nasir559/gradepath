@@ -830,3 +830,9 @@ th {
     transition: none !important;
   }
 }
+
+@media (min-width: 1000px) {
+  .university-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
